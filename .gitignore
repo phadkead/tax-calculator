@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.idea/vcs.xml
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# System Files
+.DS_Store
