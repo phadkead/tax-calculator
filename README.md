@@ -1,5 +1,6 @@
 # tax-calculator
 
+This is backend project for tax calculation
 
 As a user, 
 I can authenticate
@@ -17,3 +18,7 @@ The Tax amount (simple estimation excluding medicare levy or any extra),
 The Net amount (net income received by the user after tax),
 The Net + Superannuation amount,
 I should be able to list and delete the history of calculations and their related tax rates.
+
+## To start the project
+- Run mongodb on local
+- Do ```npm start``` and it should serve backend on http://localhost:3000
