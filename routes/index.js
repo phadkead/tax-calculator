@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const TaxCalculationModel = require('../models/taxCalculationModel');
+const taxCalculatorService = require('../service/taxCalculatorService');
 
 router.get('/taxes', (req, res) => {
   TaxCalculationModel.find({}, (err, data) => {
@@ -14,16 +15,15 @@ router.get('/taxes', (req, res) => {
   });
 });
 
-router.post('/taxes', (req, res) => {
+router.post('/taxes/calculate', (req, res) => {
   console.log(req.body);
-  const taxCalcInstance = new TaxCalculationModel(req.body);
-  taxCalcInstance.save((err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500);
-    }
-    res.status(201).send(req.body);
-  });
+  taxCalculatorService.saveTaxCalculationData(req.body)
+    .then((taxCalculation) => {
+      console.log(`${taxCalculation}taxCalculation`);
+      res.status(201).send(taxCalculation);
+    }).catch((err) => {
+      res.status(500).send(err);
+    });
 });
 
 module.exports = router;
