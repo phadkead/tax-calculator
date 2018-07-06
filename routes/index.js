@@ -16,10 +16,8 @@ router.get('/taxes', (req, res) => {
 });
 
 router.post('/taxes/calculate', (req, res) => {
-  console.log(req.body);
   taxCalculatorService.saveTaxCalculationData(req.body)
     .then((taxCalculation) => {
-      console.log(`${taxCalculation}taxCalculation`);
       res.status(201).send(taxCalculation);
     }).catch((err) => {
       res.status(500).send(err);

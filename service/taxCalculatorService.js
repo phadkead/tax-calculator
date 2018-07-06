@@ -5,7 +5,6 @@ const TaxCalculationModel = require('../models/taxCalculationModel');
 function saveTaxCalculationData(reqData) {
   return getAllTaxData(reqData)
     .then((taxCalculation) => {
-      console.log(`${taxCalculation} taxCalculation inside`);
       const taxCalcInstance = new TaxCalculationModel(taxCalculation);
       return taxCalcInstance.save();
     });
@@ -13,10 +12,8 @@ function saveTaxCalculationData(reqData) {
 
 function getAllTaxData(reqData) {
   if (reqData.gross) {
-    console.log('contains gross');
     return getAllTaxesForGrossAmount(reqData.superAnnuation, reqData.gross, reqData.finyear);
   } else if (reqData.grossWithSuper) {
-    console.log('contains grossWithSuper');
     return getAllTaxesForGrossWithSuperAmount(reqData.superAnnuation, reqData.grossWithSuper, reqData.finyear);
   }
   throw new InvalidInputError('gross or gross with super amount not present');

@@ -1,5 +1,4 @@
 function verify(req, res, next) {
-  console.log(req.headers)
   if (req.headers['x-secrettoken'] && req.headers['x-secrettoken'] === 'WeWouldLoveToWorkForYou') {
     return next();
   }

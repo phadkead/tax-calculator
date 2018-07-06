@@ -12,11 +12,12 @@ function calculateTaxDataForFinancialYear(superPercentage, gross, year) {
       const taxCriteriaForGross = getTaxSlabForGross(gross, taxSlabs);
       const taxAmount = calculateTaxAmount(gross, taxCriteriaForGross);
       const superannuationAmt = calculateSuper(superPercentage, gross);
+      const netWithSuper = getNetWithSuper(gross, taxAmount, superannuationAmt);
       const data = {
         superannuation: superannuationAmt,
         tax: taxAmount,
         net: getNet(gross, taxAmount),
-        netWithSuper: getNetWithSuper(gross, taxAmount, superannuationAmt),
+        netWithSuper,
       };
       console.log(`Calculated tax: ${JSON.stringify(data)}`);
       return data;
@@ -33,7 +34,7 @@ function getNet(gross, taxAmount) {
 }
 
 function getNetWithSuper(gross, taxAmount, superAnnuationAmt) {
-  return superAnnuationAmt + gross - taxAmount;
+  return (Number(superAnnuationAmt) + Number(gross)) - Number(taxAmount);
 }
 
 function calculateSuper(superAnnuation, gross) {
