@@ -5,12 +5,12 @@ const TaxCalculationModel = require('../models/taxCalculationModel');
 const taxCalculatorService = require('../service/taxCalculatorService');
 
 router.get('/taxes', (req, res) => {
+
   TaxCalculationModel.find({}, (err, data) => {
     if (err) {
       console.log(err);
-      return res.status(500);
+      res.status(500);
     }
-    console.log(`data${data}`);
     res.status(200).send(data);
   });
 });
@@ -25,5 +25,6 @@ router.post('/taxes/calculate', (req, res) => {
       res.status(500).send(err);
     });
 });
+
 
 module.exports = router;

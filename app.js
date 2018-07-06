@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const authenticateToken = require('./middleware/authenticateToken');
 
 const app = express();
 
@@ -18,8 +19,7 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(cookieParser());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', authenticateToken.verify, indexRouter);
 app.set('view engine', 'pug');
 
 
