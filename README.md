@@ -1,6 +1,6 @@
 # tax-calculator
 
-This is backend project for tax calculation
+This is backend for tax calculation
 
 As a user, 
 I can authenticate
