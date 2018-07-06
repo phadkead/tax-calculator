@@ -42,7 +42,7 @@ function calculateSuper(superAnnuation, gross) {
 }
 
 function calculateGrossWithSuper(superAnnuation, gross) {
-  return calculateSuper(superAnnuation, gross) + gross;
+  return Number(calculateSuper(superAnnuation, gross)) + Number(gross);
 }
 
 function getTaxSlabForGross(gross, taxslabs) {
