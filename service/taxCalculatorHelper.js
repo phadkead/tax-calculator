@@ -25,7 +25,7 @@ function calculateTaxDataForFinancialYear(superPercentage, gross, year) {
 }
 
 function getGrossAmount(superPercentage, grossWithSuperAmount) {
-  const superAmount = Math.round(grossWithSuperAmount / (1 + superPercentage));
+  const superAmount = Math.round(grossWithSuperAmount / (1 + Number(superPercentage)));
   return grossWithSuperAmount - superAmount;
 }
 
