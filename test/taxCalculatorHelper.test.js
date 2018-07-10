@@ -49,7 +49,7 @@ describe('Testing  calculation of net + super ', () => {
 
 describe('Testing  gross calculation ', () => {
   it('should calculate gross amount out of gross with super amount', () => {
-    expect(taxCalculatorHelper.getGrossAmount(10, 22000)).to.equal(19800);
+    expect(taxCalculatorHelper.getGrossAmount(10, 20000)).to.equal(18182);
   });
 });
 

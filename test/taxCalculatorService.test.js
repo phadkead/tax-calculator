@@ -13,16 +13,16 @@ describe('Testing calculated data for gross + super ', () => {
 
   it('should return object with correct tax calculations', () => {
     const expectedTaxData = {
-      superannuation: 1980,
-      gross: 19800,
-      tax: 304,
-      net: 19496,
-      netWithSuper: 21476,
+      superannuation: 2000,
+      gross: 20000,
+      tax: 342,
+      net: 19658,
+      netWithSuper: 21658,
     };
 
     return taxCalculatorService.getAllTaxesForGrossWithSuperAmount(10, 22000, '2016-17')
       .then((allTaxes) => {
-        expect(allTaxes).to.deep.equal(expectedTaxData);
+        expect(expectedTaxData).to.deep.equal(allTaxes);
       });
   });
 });
